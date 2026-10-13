@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Suit Timothy</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background: #f0f0f0;
+            background-image: url(./IMG_9157.PNG);
+            background-size: cover;
+            background-position: center;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;border: none;border-radius: 5px;color: #444;
+        }
+        button:nth-of-type(1) {
+            background-color: #C8E6C9; 
+        }
+        button:nth-of-type(2) {
+            background-color: #BBDEFB;
+        }
+        button:nth-of-type(3) {
+            background-color: #FFE0B2;
+        }
+        h1 {
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    width: fit-content;
+    padding: 5px 15px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+}
+
+p {
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    width: fit-content;
+    padding: 5px 12px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+
+    <h1 style="color: yellow; background-color: #BBDEFB;">Game Suit</h1>
+    <p style="background-color: #BBDEFB;">Pilih jenis permainan suit:</p>
+
+    <button onclick="main(0)">Batu Gunting Kertas</button>
+    <button onclick="main(1)">Gajah Orang Semut</button>
+    <button onclick="main(2)">Suit Jari</button>
+
+    <script>
+    function main(jenis) {
+    let daftar = [
+        ["Batu", "Gunting", "Kertas"],
+        ["Gajah", "Orang", "Semut"],
+        ["Jempol", "Telunjuk", "Kelingking"]
+    ];
+
+    let pilihan = prompt(
+        "Pilih:\n1. " + daftar[jenis][0] +
+        "\n2. " + daftar[jenis][1] +
+        "\n3. " + daftar[jenis][2]
+    );
+
+    if (pilihan != "1" && pilihan != "2" && pilihan != "3") {
+        alert("Pilihan tidak valid!");
+    return;
+    }
+
+    let user = daftar[jenis][pilihan - 1];
+    let komputer = daftar[jenis][Math.floor(Math.random() * 3)];
+    let menang = [
+        ["Batu", "Gunting"],
+        ["Gajah", "Orang"],
+        ["Jempol", "Telunjuk"]
+    ];
+
+    let hasil = user == komputer ? "Seri!" :
+        (
+            (jenis == 0 && (
+                    (user == "Batu" && komputer == "Gunting") ||
+                    (user == "Gunting" && komputer == "Kertas") ||
+                    (user == "Kertas" && komputer == "Batu")
+                )) ||
+                (jenis == 1 && (
+                    (user == "Gajah" && komputer == "Orang") ||
+                    (user == "Orang" && komputer == "Semut") ||
+                    (user == "Semut" && komputer == "Gajah")
+                )) ||
+                (jenis == 2 && (
+                    (user == "Jempol" && komputer == "Telunjuk") ||
+                    (user == "Telunjuk" && komputer == "Kelingking") ||
+                    (user == "Kelingking" && komputer == "Jempol")
+                ))
+            ) ? "Kamu menang!" : "Kamu kalah!";
+
+    alert("Pilihan kamu: " + user +
+              "\nPilihan komputer: " + komputer +
+              "\nHasil: " + hasil);
+    }
+    </script>
+
+</body>
+</html>
